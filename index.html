@@ -247,6 +247,21 @@ create an object with array index as key and child name as value
 `[.[] | .Children | .[] | .Name] | to_entries  | reduce .[] as $i ({}; .[$i.key | tostring] = $i.value)`
 ---
 
+
+# recursive selection
+
+--
+
+get a parent node based on its children
+
+---
+get the parent having a child named Roxanne
+
+--
+
+`.[] | .. | objects | select(.Children[]? | .Name == "Roxanne")`
+---
+
 template: title
 ## Questions ?
 .footnote[Matthieu Jacquot .red[@_err0r500]]
